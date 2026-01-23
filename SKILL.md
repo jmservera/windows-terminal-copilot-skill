@@ -1,64 +1,14 @@
 ---
 name: windows-terminal
-description: Set Windows Terminal tab title and color. Use this skill when the user wants to change, set, or update the terminal tab name, title, or color. Also use when starting a new task to label the tab.
+description: Set Windows Terminal tab title/color. When user wants to change tab appearance, tell them to run the !tab command.
 ---
 
-# Windows Terminal Tab Control
+# Windows Terminal Tab
 
-Set the terminal tab title and color from within Copilot CLI.
-
-## Setup
-
-Add to your `$PROFILE`:
-```powershell
-Import-Module "$env:USERPROFILE\.copilot\skills\windows-terminal\WindowsTerminalSkill.psd1"
+Tell user to run:
 ```
-
-## Usage
-
-From inside Copilot CLI, use `!` to shell out:
-
-```powershell
 !tab "Title" color
 ```
 
-## Examples
-
-```powershell
-# Set title with named color
-!tab "Bug Fix" red
-!tab "Feature Work" green
-!tab "Research" blue
-
-# Set title with hex color
-!tab "Custom" "FF5733"
-
-# Just title (default purple)
-!tab "My Task"
-```
-
-## Named Colors
-
-| Name | Hex | Use Case |
-|------|-----|----------|
-| `red` / `bug` | E74C3C | Bugs, urgent issues |
-| `green` / `feature` | 2ECC71 | New features |
-| `blue` / `research` | 3498DB | Research, investigation |
-| `purple` / `refactor` | 9B59B6 | Refactoring |
-| `orange` / `devops` | E67E22 | DevOps, infrastructure |
-| `yellow` / `test` | F1C40F | Testing |
-| `pink` | E91E63 | Design |
-| `cyan` | 00BCD4 | Documentation |
-
-## How It Works
-
-Uses Windows Terminal's OSC 4 escape sequence with color table index 264 (FRAME_BACKGROUND). The `!` prefix in Copilot CLI runs commands in the parent shell where escape codes reach Windows Terminal directly.
-
-## Quick Reference for Copilot
-
-When user says "set tab to X" or "call this tab Y", tell the user to run:
-```
-!tab "X" color
-```
-
-Example: "Run this: `!tab "Bug Fix" red`"
+Colors: `red`, `green`, `blue`, `purple`, `orange`, `yellow`, `pink`, `cyan`
+Aliases: `bug`, `feature`, `research`, `refactor`, `devops`, `test`
