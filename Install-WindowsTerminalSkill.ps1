@@ -10,7 +10,7 @@
 
     Supports both local and remote installation:
     - Local: .\Install-WindowsTerminalSkill.ps1
-    - Remote: irm https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/main/Install-WindowsTerminalSkill.ps1 | iex
+    - Remote: irm https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/refs/heads/master/Install-WindowsTerminalSkill.ps1 | iex
 
 .PARAMETER Force
     Overwrites existing installation without prompting.
@@ -22,7 +22,7 @@
     .\Install-WindowsTerminalSkill.ps1 -Force
 
 .EXAMPLE
-    irm https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/main/Install-WindowsTerminalSkill.ps1 | iex
+    irm https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/refs/heads/master/Install-WindowsTerminalSkill.ps1 | iex
 #>
 
 [CmdletBinding()]
@@ -39,7 +39,7 @@ $ModuleManifest = 'WindowsTerminalSkill.psd1'
 $ImportStatement = "Import-Module `"$SkillDestPath\$ModuleManifest`""
 
 # GitHub raw content base URL for remote installation
-$GitHubBaseUrl = 'https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/main'
+$GitHubBaseUrl = 'https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/refs/heads/master'
 
 # Detect if running remotely (PSScriptRoot is empty when piped from irm)
 $IsRemoteInstall = [string]::IsNullOrEmpty($SkillSourcePath)

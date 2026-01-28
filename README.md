@@ -15,7 +15,7 @@ Control Windows Terminal tab title and color from within Copilot CLI sessions.
 Run this command in PowerShell:
 
 ```powershell
-irm https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/main/Install-WindowsTerminalSkill.ps1 | iex
+irm https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/refs/heads/master/Install-WindowsTerminalSkill.ps1 | iex
 ```
 
 ### Manual Install (Local)
