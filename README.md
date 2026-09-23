@@ -12,11 +12,23 @@ Control Windows Terminal tab title and color from within Copilot CLI sessions.
 
 ### Quick Install (Remote)
 
-Run this command in PowerShell:
+Download the installer, review it if desired, and then run it:
 
 ```powershell
-irm https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/refs/heads/master/Install-WindowsTerminalSkill.ps1 | iex
+$ref = 'refs/heads/master' # For reproducibility, use a trusted tag or commit SHA.
+$downloadBase = "https://raw.githubusercontent.com/shanselman/windows-terminal-copilot-skill/$ref"
+$installer = Join-Path $env:TEMP 'Install-WindowsTerminalSkill.ps1'
+Invoke-WebRequest "$downloadBase/Install-WindowsTerminalSkill.ps1" -OutFile $installer
+try {
+    & $installer -Remote -DownloadBaseUrl $downloadBase
+}
+finally {
+    Remove-Item $installer -ErrorAction SilentlyContinue
+}
 ```
+
+This avoids executing a mutable remote script directly and makes it easy to
+inspect the downloaded file before running it.
 
 ### Manual Install (Local)
 
